@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/makem/globe.core/issues"
   },
-  "homepage": "http://globejs.com"
+  "homepage": "http://globejs.com",
+  "devDependencies": {
+    "chai": "^1.10.0"
+  }
 }
