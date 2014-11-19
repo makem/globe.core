@@ -52,7 +52,7 @@ exports.MessageBus = function MessageBus() {
         //Message should exists and have header and body sections
         if(message){
             var header = message.getHeader();
-            if(header && header.id && header.ownerId && header.createdWhen){
+            if(header && header.id && header.ownerId && header.createdWhen && header.name){
                 var body = message.getBody();
                 if(body){
                     return true;

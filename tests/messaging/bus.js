@@ -15,7 +15,7 @@ describe('Message bus', function () {
     });
     function createBroadcastMockMessage() {
         var ownerId = idGenerator.get();
-        var message = new BroadcastMessage(ownerId,{
+        var message = new BroadcastMessage(ownerId, 'TestMessageName',{
             key:'value'
         });
         return message;

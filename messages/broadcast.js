@@ -5,8 +5,8 @@
 var util = require('util');
 var Message = require('./messages').Message;
 
-function BroadcastMessage(ownerId, body) {
-    Message.call(this,ownerId, body);
+function BroadcastMessage(ownerId, name, body) {
+    Message.call(this,ownerId, name, body);
 
 }
 

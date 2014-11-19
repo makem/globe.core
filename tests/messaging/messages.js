@@ -14,7 +14,8 @@ describe('Messages', function () {
     var body = {
         key: 'value'
     };
-    var message = new Message(ownerId, body);
+    var name = 'SSO.Integration.GetPassport';
+    var message = new Message(ownerId, name, body);
     describe('all', function () {
         describe('should have a header', function () {
             var header = message.getHeader();
@@ -34,6 +35,10 @@ describe('Messages', function () {
             it('that has createdWhen property', function () {
                 header.should.have.property('createdWhen');
                 header.createdWhen.should.be.instanceOf(Date);
+            });
+            it('that has name property', function () {
+                header.should.have.property('name');
+                header.name.should.be.a('string');
             });
         });
         describe('should have body', function () {
