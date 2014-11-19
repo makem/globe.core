@@ -16,7 +16,7 @@ describe('Messages', function () {
     };
     var name = 'SSO.Integration.GetPassport';
     var message = new Message(ownerId, name, body);
-    describe('all', function () {
+    describe('all instances', function () {
         describe('should have a header', function () {
             var header = message.getHeader();
             it('that is just an object', function () {
