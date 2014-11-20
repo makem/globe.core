@@ -4,6 +4,7 @@
 
 var Message = require('../../messages').Message;
 var MessageFormatError = require('../../messages/errors').MessageFormatError;
+var Priority = require('../../messages').Priority;
 
 var chai = require('chai');
 chai.should();
@@ -40,26 +41,47 @@ describe('Messages', function () {
                 header.should.have.property('name');
                 header.name.should.be.a('string');
             });
+            it('that has priority property', function () {
+                header.should.have.property('priority');
+                header.priority.should.be.instanceOf(Priority);
+            });
+            it('that is of 111 priority by default', function () {
+                header.priority.toString().should.be.equal('111');
+                header.priority.getDeliveryPriorityLetter().should.be.equal('M');
+                header.priority.getHandlingPriorityLetter().should.be.equal('M');
+                header.priority.getFeedbackPriorityLetter().should.be.equal('M');
+            });
         });
         describe('should have body', function () {
             var body = message.getBody();
             it('that is an object', function () {
                 body.should.be.an('object');
             });
-            it('that is cannot be assigned if is not an object',function(){
-                chai.expect(function(){
+            it('that is cannot be assigned if is not an object', function () {
+                chai.expect(function () {
                     new Message(ownerId, 123);
                 }).to.throw(MessageFormatError);
             });
-            it('that is cannot be assigned if is null or undefined',function(){
-                chai.expect(function(){
+            it('that is cannot be assigned if is null or undefined', function () {
+                chai.expect(function () {
                     new Message(ownerId, null);
                 }).to.throw(MessageFormatError);
-                chai.expect(function(){
+                chai.expect(function () {
                     new Message(ownerId);
                 }).to.throw(MessageFormatError);
 
             });
+        });
+        describe('should allow to change',function(){
+           describe('priority',function(){
+               it('using a new Priority instance', function(){
+                   message.setPriority(new Priority(121));
+                   message.getHeader().priority.toString().should.be.equal('121');
+                   message.setPriority(new Priority('201'));
+                   message.getHeader().priority.toString().should.be.equal('201');
+
+               });
+           })
         });
     });
 });

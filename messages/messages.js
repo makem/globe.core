@@ -3,7 +3,6 @@
  */
 var idGenerator = require('../utils/idGenerator');
 var MessageFormatError = require('./errors').MessageFormatError;
-
 var Priority = require('./priority');
 
 /**
@@ -21,6 +20,7 @@ function Message(ownerId, name, body) {
     this._name = name;
     this._oid = ownerId;
     this._crw = new Date();
+    this._prt = new Priority();
     if(!body || typeof(body) != 'object'){
         throw new MessageFormatError('MS002','Message body should be an object', body);
     }
@@ -36,12 +36,20 @@ Message.prototype.getHeader = function () {
         id: this._id,
         name: this._name,
         ownerId: this._oid,
-        createdWhen: this._crw
+        createdWhen: this._crw,
+        priority: this._prt
     }
 };
 
 Message.prototype.getBody = function () {
     return this._body;
+};
+
+Message.prototype.setPriority = function(priority){
+    if(!priority instanceof Priority){
+        priority = new Priority(priority);
+    }
+    this._prt = priority;
 };
 
 exports.Message = Message;
