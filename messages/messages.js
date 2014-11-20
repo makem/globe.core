@@ -3,6 +3,9 @@
  */
 var idGenerator = require('../util/idGenerator');
 var MessageFormatError = require('./errors').MessageFormatError;
+
+var Priority = require('./priority');
+
 /**
  *
  * @param ownerId
@@ -42,3 +45,5 @@ Message.prototype.getBody = function () {
 };
 
 exports.Message = Message;
+exports.Priority = Priority;
+
