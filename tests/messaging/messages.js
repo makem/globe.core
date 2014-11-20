@@ -7,7 +7,7 @@ var MessageFormatError = require('../../messages/errors').MessageFormatError;
 
 var chai = require('chai');
 chai.should();
-var idGenerator = require('../../util/idGenerator');
+var idGenerator = require('../../utils/idGenerator');
 
 describe('Messages', function () {
     var ownerId = idGenerator.get();

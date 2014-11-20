@@ -1,7 +1,7 @@
 /**
  * Created by mavy on 11/19/2014.
  */
-var idGenerator = require('../util/idGenerator');
+var idGenerator = require('../utils/idGenerator');
 var MessageFormatError = require('./errors').MessageFormatError;
 
 var Priority = require('./priority');

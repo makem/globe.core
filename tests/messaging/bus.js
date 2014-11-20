@@ -1,7 +1,7 @@
 /**
  * Created by mavy on 11/18/2014.
  */
-var idGenerator = require('../../util/idGenerator');
+var idGenerator = require('../../utils/idGenerator');
 var chai = require('chai');
 chai.should();
 

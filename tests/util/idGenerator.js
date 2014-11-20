@@ -2,7 +2,7 @@
  * Created by mavy on 11/19/2014.
  */
 
-var generator = require('../../util/idGenerator');
+var generator = require('../../utils/idGenerator');
 var chai = require('chai');
 chai.should();
 
